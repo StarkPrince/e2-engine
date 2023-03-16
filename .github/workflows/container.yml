@@ -1,10 +1,8 @@
-name: deploy-container
+name: Deploy to Amazon ECS
 
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'packages/container/**'
 
 defaults:
   run:
@@ -15,12 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      - run: npm run build
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - uses: chrislennon/action-aws-cli@v1.1
-      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
