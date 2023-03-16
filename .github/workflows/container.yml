@@ -20,7 +20,7 @@ jobs:
       - run: npm run build
         
       - uses: chrislennon/action-aws-cli@v1
-      - run: aws s3 sync ./dist s3://${{secret.S3_BUCKET_NAME}}/container/latest
-        env :
-          AWS_ACCESS_KEY_ID : ${{secret.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY : ${{secret.AWS_SECRET_ACCESS_KEY}}
+      # - run: aws s3 sync ./dist s3://${{secret.S3_BUCKET_NAME}}/container/latest
+        # env :
+          # AWS_ACCESS_KEY_ID : ${{secret.AWS_ACCESS_KEY_ID}}
+          # AWS_SECRET_ACCESS_KEY : ${{secret.AWS_SECRET_ACCESS_KEY}}
