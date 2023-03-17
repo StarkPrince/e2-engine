@@ -1,8 +1,9 @@
 import React from "react";
-import { mount } from "marketing/MarketingApp";
+import MarkertingApp from "./components/MarketingApp";
 
-console.log(mount);
 export default () =>
 {
-    return <div>Hi there!</div>;
+    return <div>
+        <MarkertingApp />
+    </div>;
 }
